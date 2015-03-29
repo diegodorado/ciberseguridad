@@ -15,6 +15,15 @@ set :scm, :git
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 3
 
+set :file_permissions_paths, [
+  'storage/app',
+  'storage/cms',
+  'storage/logs',
+  'storage/framework',
+  'storage/temp',
+]
+
+
 namespace :deploy do
 
   desc 'Restart application'
@@ -39,12 +48,14 @@ namespace :deploy do
 end
 
 namespace :composer do
-    before 'install', 'change_dir'
+    before 'install', 'composer_update'
 
     desc 'Composer update'
-    task :change_dir do
+    task :composer_update do
         on roles(:app) do
-            execute "cd #{release_path}/ && composer update"
+          within release_path do
+              execute 'composer update'
+          end
         end
     end
 end
