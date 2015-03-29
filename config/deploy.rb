@@ -23,7 +23,6 @@ set :file_permissions_paths, [
   'storage/temp',
 ]
 
-
 namespace :deploy do
 
   desc 'Restart application'
@@ -53,9 +52,7 @@ namespace :composer do
     desc 'Composer update'
     task :composer_update do
         on roles(:app) do
-          within release_path do
-              execute 'composer update'
-          end
+            execute "cd #{release_path}/ && composer update"
         end
     end
 end
