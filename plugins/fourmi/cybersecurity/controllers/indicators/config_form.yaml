@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Indicator
+
+# Model Form Field configuration
+form: $/fourmi/cybersecurity/models/indicator/fields.yaml
+
+# Model Class name
+modelClass: Fourmi\CyberSecurity\Models\Indicator
+
+# Default redirect location
+defaultRedirect: fourmi/cybersecurity/indicators
+
+# Create page
+create:
+    title: Create Indicator
+    redirect: fourmi/cybersecurity/indicators/update/:id
+    redirectClose: fourmi/cybersecurity/indicators
+
+# Update page
+update:
+    title: Edit Indicator
+    redirect: fourmi/cybersecurity/indicators
+    redirectClose: fourmi/cybersecurity/indicators
+
+# Preview page
+preview:
+    title: Preview Indicator

@@ -1,0 +1,33 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
+list: ~/plugins/fourmi/cybersecurity/models/dimension/columns.yaml
+
+# Model Class name
+modelClass: Fourmi\CyberSecurity\Models\Dimension
+
+# List Title
+title: List of Dimensions
+
+# Link URL for each record
+recordUrl: fourmi/cybersecurity/dimensions/update/:id
+
+# Message to display if the list is empty
+noRecordsMessage: No Records
+
+# Records to display per page
+recordsPerPage: 10
+
+# Display checkboxes next to each record
+# showCheckboxes: true
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    buttons: list_toolbar
+
+    # Search widget configuration
+    search:
+        prompt: Search

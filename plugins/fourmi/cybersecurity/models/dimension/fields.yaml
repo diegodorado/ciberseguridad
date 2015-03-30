@@ -1,0 +1,22 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+      label: ID
+      hidden: true
+
+
+    name:
+      label: Name
+      placeholder: Name
+      span: left
+      required: true
+      size: tiny
+
+    title:
+      label: Title
+      span: right
+      placeholder: Title
+      required: true

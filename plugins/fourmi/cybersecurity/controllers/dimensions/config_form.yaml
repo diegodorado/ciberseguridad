@@ -1,0 +1,16 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: Dimension
+form: ~/plugins/fourmi/cybersecurity/models/dimension/fields.yaml
+modelClass: Fourmi\CyberSecurity\Models\Dimension
+defaultRedirect: fourmi/cybersecurity/dimensions
+
+create:
+    redirect: fourmi/cybersecurity/dimensions/update/:id
+    redirectClose: fourmi/cybersecurity/dimensions
+
+update:
+    redirect: fourmi/cybersecurity/dimensions
+    redirectClose: fourmi/cybersecurity/dimensions

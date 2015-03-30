@@ -1,0 +1,22 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    id:
+      label: ID
+      disabled: true
+      hidden: true
+
+    factor:
+      required: true
+      label: Factor
+      type: relation
+      nameFrom: name
+
+
+    title:
+      label: Title
+      placeholder: Title
+      required: true

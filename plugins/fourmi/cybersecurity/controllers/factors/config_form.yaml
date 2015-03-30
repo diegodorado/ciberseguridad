@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Factor
+
+# Model Form Field configuration
+form: $/fourmi/cybersecurity/models/factor/fields.yaml
+
+# Model Class name
+modelClass: Fourmi\CyberSecurity\Models\Factor
+
+# Default redirect location
+defaultRedirect: fourmi/cybersecurity/factors
+
+# Create page
+create:
+    title: Create Factor
+    redirect: fourmi/cybersecurity/factors/update/:id
+    redirectClose: fourmi/cybersecurity/factors
+
+# Update page
+update:
+    title: Edit Factor
+    redirect: fourmi/cybersecurity/factors
+    redirectClose: fourmi/cybersecurity/factors
+
+# Preview page
+preview:
+    title: Preview Factor

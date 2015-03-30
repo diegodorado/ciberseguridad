@@ -1,0 +1,10 @@
+1.0.1: First version of CyberSecurity
+1.0.2:
+  - Adds Dimensions, Factors and Indicators to the DB
+  - create_dimensions_table.php
+  - create_factors_table.php
+  - create_indicators_table.php
+  - create_countries_table.php
+1.0.3:
+  - Seed Tables
+  - seed_all_tables.php
