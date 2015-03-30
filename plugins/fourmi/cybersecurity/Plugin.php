@@ -34,7 +34,7 @@ class Plugin extends PluginBase
     {
         return [
             'cybersecurity' => [
-                'label'       => 'Ciber Security',
+                'label'       => 'Ciber Seguridad',
                 'url'         => \Backend::url('fourmi/cybersecurity/dimensions/index'),
                 'icon'        => 'icon-signal',
                 'permissions' => ['acme.blog.*'],
