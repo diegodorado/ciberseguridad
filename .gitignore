@@ -14,9 +14,3 @@ sftp-config.json
 selenium.php
 .env.*.php
 .env.php
-
-/storage/app/*
-/storage/cms/*
-/storage/framework/*
-/storage/logs/*
-/storage/temp/*
