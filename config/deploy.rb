@@ -26,7 +26,21 @@ set :linked_files, %w{
   .env
 }
 
+set :storage_paths, %w{
+  storage/app
+  storage/cms/cache
+  storage/cms/combiner
+  storage/cms/twig
+  storage/framework/cache
+  storage/framework/sessions
+  storage/framework/views
+  storage/logs
+  storage/temp
+}
 
+set :linked_dirs, fetch(:linked_dirs) + %w{public/system}
+
+set :laravel_artisan_flags, "--env=production --no-interaction"
 
 namespace :deploy do
 
@@ -35,15 +49,6 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
     end
   end
 
@@ -58,8 +63,42 @@ namespace :deploy do
     end
   end
 
+
 end
 
+
+namespace :october do
+
+  desc "Check setup"
+  task :check do
+    on roles(:all) do |host|
+
+      fetch(:storage_paths).each do |p|
+        execute "mkdir -p #{shared_path.join(p)}"
+      end
+
+      invoke 'composer:update'
+
+    end
+  end
+
+
+  desc "Execute php artisan october:down"
+  task :down do
+    on roles fetch(:laravel_roles) do
+      within release_path do
+        execute :php, :artisan, "october:down", "--force" , fetch(:laravel_artisan_flags)
+      end
+    end
+  end
+
+  desc "Execute php artisan october:up"
+  task :up do
+    invoke "laravel:artisan", "october:up"
+  end
+
+
+end
 
 namespace :composer do
   desc 'Composer update'
