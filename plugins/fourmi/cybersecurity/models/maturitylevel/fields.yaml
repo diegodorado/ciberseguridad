@@ -5,12 +5,4 @@
 fields:
     id:
         label: ID
-        hidden: true
-
-
-    name:
-      label: Name
-      placeholder: Name
-
-    maturity_levels:
-        type: maturity_levels
+        disabled: true

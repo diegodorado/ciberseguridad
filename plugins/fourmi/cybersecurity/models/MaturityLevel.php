@@ -3,15 +3,15 @@
 use Model;
 
 /**
- * Factor Model
+ * MaturityLevel Model
  */
-class Factor extends Model
+class MaturityLevel extends Model
 {
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'fourmi_cybersecurity_factors';
+    public $table = 'fourmi_cybersecurity_maturity_levels';
 
     /**
      * @var array Guarded fields
@@ -21,24 +21,19 @@ class Factor extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = ['level', 'indicator_id', 'country_id'];
 
     /**
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'indicators' => ['Fourmi\CyberSecurity\Models\Indicator']
-    ];
-    public $belongsTo = [
-        'dimension' => ['Fourmi\CyberSecurity\Models\Dimension']
-    ];
+    public $hasMany = [];
+    public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
-
 
 }

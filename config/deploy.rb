@@ -9,26 +9,22 @@ set :scm, :git
 # set :log_level, :debug
 # set :pty, true
 
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 3
 
 set :file_permissions_paths, [
-  'storage/app',
-  'storage/cms',
-  'storage/cms/cache',
-  'storage/cms/combiner',
-  'storage/cms/twig',
-  #'storage/logs',
-  'storage/framework',
-  'storage/framework/cache',
-  'storage/framework/sessions',
-  'storage/framework/views',
-  'storage/temp',
+  'themes',
+  'storage',
 ]
 
+set :linked_dirs, %w{
+  vendor
+  storage
+}
+
+set :linked_files, %w{
+  .env
+}
 
 
 
@@ -64,31 +60,12 @@ namespace :deploy do
 
 end
 
-set :linked_dirs, %w{
-  storage/app
-  storage/cms/cache
-  storage/cms/combiner
-  storage/cms/twig
-  storage/logs
-  storage/framework/cache
-  storage/framework/sessions
-  storage/framework/views
-  storage/temp
-}
-
-set :linked_files, %w{
-  .env
-}
-
-
 
 namespace :composer do
-    before 'install', 'composer_update'
-
-    desc 'Composer update'
-    task :composer_update do
-        on roles(:app) do
-            execute "cd #{release_path}/ && composer update"
-        end
+  desc 'Composer update'
+  task :update do
+    on roles(:app) do
+      execute "cd #{release_path}/ && composer update"
     end
+  end
 end

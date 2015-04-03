@@ -27,7 +27,9 @@ class Dimension extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'factors' => ['Fourmi\CyberSecurity\Models\Factor']
+    ];
     public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];

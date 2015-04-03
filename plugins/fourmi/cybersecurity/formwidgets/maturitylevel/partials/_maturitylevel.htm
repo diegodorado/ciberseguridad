@@ -1,0 +1,71 @@
+<hr/>
+<?php if ($this->previewMode): ?>
+
+    <div class="form-control">
+        <?= $value ?>
+    </div>
+
+<?php else: ?>
+  <?//=dump($value)?>
+  <?php foreach ($dimensions as $dimension): ?>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-1">
+        <h2>
+          <?php echo $dimension->name ?>
+          <br/>
+          <small><?php echo $dimension->title ?></small>
+        </h2>
+      </div>
+      <div class="col-md-9">
+        <?php foreach ($dimension->factors as $factor): ?>
+          <div class="row">
+            <div class="col-md-2">
+              <h4>
+                <?php echo $factor->name ?>
+                <br/>
+                <small><?php echo $factor->title ?></small>
+              </h4>
+
+            </div>
+            <div class="col-md-10 text-right">
+              <blockquote>
+
+              <?php foreach ($factor->indicators as $indicator): ?>
+                <div class="row">
+                  <div class="col-md-5">
+                    <h5><?php echo $indicator->title ?></h5>
+                  </div>
+
+                  <div class="col-md-1">
+                    <input
+                      type="number"
+                      id="<?= $this->getId('input') ?>"
+                      min="0"
+                      max="5"
+                      step="1"
+                      pattern="\d"
+                      name="<?= $name ?>[<?= $indicator->id ?>]"
+                      value="<?= (isset($value[$indicator->id])?$value[$indicator->id]:0) ?>"
+                      class="form-control input-sm"
+                      autocomplete="off" />
+                  </div>
+                  <div class="col-md-2">
+                    <div class="progress">
+                      <div class="progress-bar">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach ;?>
+            </blockquote>
+            </div>
+          </div>
+
+        <?php endforeach ;?>
+      </div>
+    </div>
+    <hr/>
+
+  <?php endforeach ;?>
+
+<?php endif ?>

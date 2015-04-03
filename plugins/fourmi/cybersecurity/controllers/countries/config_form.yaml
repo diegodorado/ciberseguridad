@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Country
+
+# Model Form Field configuration
+form: $/fourmi/cybersecurity/models/country/fields.yaml
+
+# Model Class name
+modelClass: Fourmi\CyberSecurity\Models\Country
+
+# Default redirect location
+defaultRedirect: fourmi/cybersecurity/countries
+
+# Create page
+create:
+    title: Create Country
+    redirect: fourmi/cybersecurity/countries/update/:id
+    redirectClose: fourmi/cybersecurity/countries
+
+# Update page
+update:
+    title: Edit Country
+    redirect: fourmi/cybersecurity/countries
+    redirectClose: fourmi/cybersecurity/countries
+
+# Preview page
+preview:
+    title: Preview Country

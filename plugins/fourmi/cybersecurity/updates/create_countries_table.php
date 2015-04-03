@@ -16,20 +16,10 @@ class CreateCountriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('fourmi_cybersecurity_indicators_by_countries', function($table)
-        {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->integer('indicator_id')->unsigned()->index();
-            $table->integer('country_id')->unsigned()->index();
-            $table->integer('value');
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
-      Schema::dropIfExists('fourmi_cybersecurity_indicators_by_countries');
       Schema::dropIfExists('fourmi_cybersecurity_countries');
     }
 

@@ -36,4 +36,11 @@ class Country extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public $hasManyThrough = [
+        'maturity_levels' => [
+            'Fourmi\CyberSecurity\Models\MaturityLevel',
+            'through' => 'Fourmi\CyberSecurity\Models\Indicator'
+        ],
+    ];
+
 }

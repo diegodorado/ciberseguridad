@@ -37,7 +37,7 @@ class Plugin extends PluginBase
                 'label'       => 'Ciber Seguridad',
                 'url'         => \Backend::url('fourmi/cybersecurity/dimensions/index'),
                 'icon'        => 'icon-signal',
-                'permissions' => ['acme.blog.*'],
+                'permissions' => ['fourmi.cybersecurity.*'],
                 'order'       => 500,
 
                 'sideMenu' => [
@@ -59,12 +59,12 @@ class Plugin extends PluginBase
                         'url'         => \Backend::url('fourmi/cybersecurity/indicators/index'),
                         'permissions' => ['fourmi.cybersecurity.access_indicators']
                     ],
-                    /*'indicators_by_country' => [
-                        'label'       => 'Indicadores por Pais',
-                        'icon'        => 'icon-tasks',
-                        'url'         => \Backend::url('fourmi/cybersecurity/dimensions/index'),
-                        'permissions' => ['acme.blog.access_categories']
-                    ],*/
+                    'countries' => [
+                        'label'       => 'Paises',
+                        'icon'        => 'icon-globe',
+                        'url'         => \Backend::url('fourmi/cybersecurity/countries/index'),
+                        'permissions' => ['fourmi.cybersecurity.access_countries']
+                    ],
                 ]
 
             ]
@@ -72,5 +72,15 @@ class Plugin extends PluginBase
     }
 
 
+
+    public function registerFormWidgets()
+    {
+        return [
+            'Fourmi\CyberSecurity\FormWidgets\MaturityLevel' => [
+                'label' => 'Maturity levels',
+                'code'  => 'maturity_levels'
+            ]
+        ];
+    }
 
 }
