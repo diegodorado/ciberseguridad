@@ -43,4 +43,12 @@ class Country extends Model
         ],
     ];
 
+
+
+
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+
+    public $translatable = ['name','excerpt','description'];
+
+
 }

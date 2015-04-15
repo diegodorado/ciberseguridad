@@ -1,4 +1,6 @@
 description = "Default layout"
+
+[localePicker]
 ==
 <!DOCTYPE html>
 <html>
@@ -30,14 +32,17 @@ description = "Default layout"
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ 'home'|page }}">October Demo</a>
+                        <a class="navbar-brand" href="{{ 'home'|page }}">Cyber Security</a>
                     </div>
                     <div class="collapse navbar-collapse navbar-main-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Basic concepts</a></li>
-                            <li class="{% if this.page.id == 'ajax' %}active{% endif %}"><a href="{{ 'ajax'|page }}">AJAX framework</a></li>
-                            <li class="{% if this.page.id == 'plugins' %}active{% endif %}"><a href="{{ 'plugins'|page }}">Plugin components</a></li>
+                            <li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Dimensions</a></li>
                         </ul>
+
+                        <form class="navbar-form navbar-right">
+                          {% component 'localePicker' %}
+                        </form>
+
                     </div>
                 </div>
             </nav>

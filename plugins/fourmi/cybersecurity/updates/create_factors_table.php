@@ -13,7 +13,7 @@ class CreateFactorsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('dimension_id')->unsigned()->index();
-            $table->string('name');
+            $table->string('code');
             $table->string('title');
             $table->timestamps();
         });

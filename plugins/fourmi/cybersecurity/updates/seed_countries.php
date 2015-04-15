@@ -9,39 +9,38 @@ class SeedCountries extends Seeder
     public function run()
     {
 
-      Country::create(['id' => '1', 'name' => 'Antigua y Barbuda']);
-      Country::create(['id' => '2', 'name' => 'Argentina']);
-      Country::create(['id' => '3', 'name' => 'Bahamas']);
-      Country::create(['id' => '4', 'name' => 'Barbados']);
-      Country::create(['id' => '5', 'name' => 'Belize']);
-      Country::create(['id' => '6', 'name' => 'Bolivia']);
-      Country::create(['id' => '7', 'name' => 'Brasil']);
-      Country::create(['id' => '8', 'name' => 'Chile']);
-      Country::create(['id' => '9', 'name' => 'Colombia']);
-      Country::create(['id' => '10', 'name' => 'Costa Rica']);
-      Country::create(['id' => '11', 'name' => 'Dominica']);
-      Country::create(['id' => '12', 'name' => 'Ecuador']);
-      Country::create(['id' => '13', 'name' => 'El Salvador']);
-      Country::create(['id' => '14', 'name' => 'Grenada']);
-      Country::create(['id' => '15', 'name' => 'Guatemala']);
-      Country::create(['id' => '16', 'name' => 'Guyana']);
-      Country::create(['id' => '17', 'name' => 'Haití']);
-      Country::create(['id' => '18', 'name' => 'Honduras']);
-      Country::create(['id' => '19', 'name' => 'Jamaica']);
-      Country::create(['id' => '20', 'name' => 'México']);
-      Country::create(['id' => '21', 'name' => 'Nicaragua']);
-      Country::create(['id' => '22', 'name' => 'Panamá']);
-      Country::create(['id' => '23', 'name' => 'Paraguay']);
-      Country::create(['id' => '24', 'name' => 'Perú']);
-      Country::create(['id' => '25', 'name' => 'República Dominicana']);
-      Country::create(['id' => '26', 'name' => 'Saint Kitts y Nevis']);
-      Country::create(['id' => '27', 'name' => 'San Vicente y las Granadinas']);
-      Country::create(['id' => '28', 'name' => 'Santa Lucía']);
-      Country::create(['id' => '29', 'name' => 'Suriname']);
-      Country::create(['id' => '30', 'name' => 'Trinidad y Tobago']);
-      Country::create(['id' => '31', 'name' => 'Uruguay']);
-      Country::create(['id' => '32', 'name' => 'Venezuela']);
-
+      $c=Country::create(['id' => '1', 'code' => 'ag', 'name' => 'Antigua and Barbuda', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Antigua and Barbuda', 'en');	$c->setTranslateAttribute('name', 'Antigua y Barbuda', 'es');	$c->save();
+      $c=Country::create(['id' => '2', 'code' => 'ar', 'name' => 'Argentina', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Argentina', 'en');	$c->setTranslateAttribute('name', 'Argentina', 'es');	$c->save();
+      $c=Country::create(['id' => '3', 'code' => 'bs', 'name' => 'Bahamas', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Bahamas', 'en');	$c->setTranslateAttribute('name', 'Bahamas', 'es');	$c->save();
+      $c=Country::create(['id' => '4', 'code' => 'bb', 'name' => 'Barbados', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Barbados', 'en');	$c->setTranslateAttribute('name', 'Barbados', 'es');	$c->save();
+      $c=Country::create(['id' => '5', 'code' => 'bz', 'name' => 'Belize', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Belize', 'en');	$c->setTranslateAttribute('name', 'Belize', 'es');	$c->save();
+      $c=Country::create(['id' => '6', 'code' => 'bo', 'name' => 'Bolivia', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Bolivia', 'en');	$c->setTranslateAttribute('name', 'Bolivia', 'es');	$c->save();
+      $c=Country::create(['id' => '7', 'code' => 'br', 'name' => 'Brazil', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Brazil', 'en');	$c->setTranslateAttribute('name', 'Brasil', 'es');	$c->save();
+      $c=Country::create(['id' => '8', 'code' => 'cl', 'name' => 'Chile', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Chile', 'en');	$c->setTranslateAttribute('name', 'Chile', 'es');	$c->save();
+      $c=Country::create(['id' => '9', 'code' => 'co', 'name' => 'Colombia', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Colombia', 'en');	$c->setTranslateAttribute('name', 'Colombia', 'es');	$c->save();
+      $c=Country::create(['id' => '10', 'code' => 'cr', 'name' => 'Costa Rica', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Costa Rica', 'en');	$c->setTranslateAttribute('name', 'Costa Rica', 'es');	$c->save();
+      $c=Country::create(['id' => '11', 'code' => 'dm', 'name' => 'Dominica', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Dominica', 'en');	$c->setTranslateAttribute('name', 'Dominica', 'es');	$c->save();
+      $c=Country::create(['id' => '12', 'code' => 'ec', 'name' => 'Ecuador', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Ecuador', 'en');	$c->setTranslateAttribute('name', 'Ecuador', 'es');	$c->save();
+      $c=Country::create(['id' => '13', 'code' => 'sv', 'name' => 'El Salvador', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'El Salvador', 'en');	$c->setTranslateAttribute('name', 'El Salvador', 'es');	$c->save();
+      $c=Country::create(['id' => '14', 'code' => 'gd', 'name' => 'Grenada', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Grenada', 'en');	$c->setTranslateAttribute('name', 'Grenada', 'es');	$c->save();
+      $c=Country::create(['id' => '15', 'code' => 'gt', 'name' => 'Guatemala', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Guatemala', 'en');	$c->setTranslateAttribute('name', 'Guatemala', 'es');	$c->save();
+      $c=Country::create(['id' => '16', 'code' => 'gy', 'name' => 'Guyana', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Guyana', 'en');	$c->setTranslateAttribute('name', 'Guyana', 'es');	$c->save();
+      $c=Country::create(['id' => '17', 'code' => 'ht', 'name' => 'Haiti', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Haiti', 'en');	$c->setTranslateAttribute('name', 'Haití', 'es');	$c->save();
+      $c=Country::create(['id' => '18', 'code' => 'hn', 'name' => 'Honduras', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Honduras', 'en');	$c->setTranslateAttribute('name', 'Honduras', 'es');	$c->save();
+      $c=Country::create(['id' => '19', 'code' => 'jm', 'name' => 'Jamaica', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Jamaica', 'en');	$c->setTranslateAttribute('name', 'Jamaica', 'es');	$c->save();
+      $c=Country::create(['id' => '20', 'code' => 'mx', 'name' => 'Mexico', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Mexico', 'en');	$c->setTranslateAttribute('name', 'México', 'es');	$c->save();
+      $c=Country::create(['id' => '21', 'code' => 'ni', 'name' => 'Nicaragua', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Nicaragua', 'en');	$c->setTranslateAttribute('name', 'Nicaragua', 'es');	$c->save();
+      $c=Country::create(['id' => '22', 'code' => 'pa', 'name' => 'Panama', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Panama', 'en');	$c->setTranslateAttribute('name', 'Panamá', 'es');	$c->save();
+      $c=Country::create(['id' => '23', 'code' => 'py', 'name' => 'Paraguay', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Paraguay', 'en');	$c->setTranslateAttribute('name', 'Paraguay', 'es');	$c->save();
+      $c=Country::create(['id' => '24', 'code' => 'pe', 'name' => 'Peru', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Peru', 'en');	$c->setTranslateAttribute('name', 'Perú', 'es');	$c->save();
+      $c=Country::create(['id' => '25', 'code' => 'do', 'name' => 'Dominican Republic', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Dominican Republic', 'en');	$c->setTranslateAttribute('name', 'República Dominicana', 'es');	$c->save();
+      $c=Country::create(['id' => '26', 'code' => 'kn', 'name' => 'Saint Kitts and Nevis', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Saint Kitts and Nevis', 'en');	$c->setTranslateAttribute('name', 'Saint Kitts y Nevis', 'es');	$c->save();
+      $c=Country::create(['id' => '27', 'code' => 'vc', 'name' => 'Saint Vincent and the Grenadines', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Saint Vincent and the Grenadines', 'en');	$c->setTranslateAttribute('name', 'San Vicente y las Granadinas', 'es');	$c->save();
+      $c=Country::create(['id' => '28', 'code' => 'lc', 'name' => 'Saint Lucia', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Saint Lucia', 'en');	$c->setTranslateAttribute('name', 'Santa Lucía', 'es');	$c->save();
+      $c=Country::create(['id' => '29', 'code' => 'sr', 'name' => 'Suriname', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Suriname', 'en');	$c->setTranslateAttribute('name', 'Suriname', 'es');	$c->save();
+      $c=Country::create(['id' => '30', 'code' => 'tt', 'name' => 'Trinidad and Tobago', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Trinidad and Tobago', 'en');	$c->setTranslateAttribute('name', 'Trinidad y Tobago', 'es');	$c->save();
+      $c=Country::create(['id' => '31', 'code' => 'uy', 'name' => 'Uruguay', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Uruguay', 'en');	$c->setTranslateAttribute('name', 'Uruguay', 'es');	$c->save();
+      $c=Country::create(['id' => '32', 'code' => 've', 'name' => 'Venezuela', 'excerpt' => '', 'description' => '', 'population' => 0, 'people_with_internet' => 0, 'people_with_broadband' => 0, 'people_with_mobile_phone' => 0]);	$c->setTranslateAttribute('name', 'Venezuela', 'en');	$c->setTranslateAttribute('name', 'Venezuela', 'es');	$c->save();
 
     }
 

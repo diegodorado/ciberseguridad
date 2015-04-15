@@ -14,9 +14,8 @@ fields:
       type: relation
       nameFrom: name
 
-    name:
-      label: Name
-      placeholder: Name
+    code:
+      label: Code
       span: left
       required: true
       size: tiny

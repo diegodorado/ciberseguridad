@@ -38,4 +38,8 @@ class Indicator extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+    public $translatable = ['title','maturity_level1_text','maturity_level2_text','maturity_level3_text','maturity_level4_text','maturity_level5_text'];
+
 }

@@ -7,10 +7,58 @@ fields:
         label: ID
         hidden: true
 
+    code:
+      label: Code
+      span: none
+      size: 2
+      cssClass: col-md-3
 
     name:
       label: Name
       placeholder: Name
+      span: none
+      cssClass: col-md-9
+
+    population:
+      label: Population
+      type: number
+      span: none
+      cssClass: col-md-3
+
+    people_with_internet:
+      label: People with Internet
+      type: number
+      span: none
+      cssClass: col-md-3
+
+    people_with_broadband:
+      label: People with Broadband
+      type: number
+      span: none
+      cssClass: col-md-3
+
+    people_with_mobile_phone:
+      label: People with mobile phone
+      type: number
+      span: none
+      cssClass: col-md-3
+
+    excerpt:
+      label: Excerpt
+      placeholder: Write an introductory text.
+      type: textarea
+      size: small
+      span: none
+      cssClass: col-md-12
+
+    description:
+      label: Description
+      placeholder: Write a description.
+      type: textarea
+      size: large
+      span: none
+      cssClass: col-md-12
+
 
     maturity_levels:
         type: maturity_levels

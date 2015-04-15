@@ -10,7 +10,7 @@ columns:
     factor:
         label: Factor
         relation: factor
-        select: name
+        select: code
         searchable: true
         sortable: true
 

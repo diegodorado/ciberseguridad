@@ -14,8 +14,8 @@ columns:
         searchable: true
         sortable: true
 
-    name:
-        label: Name
+    code:
+        label: Code
         searchable: true
 
     title:

@@ -13,10 +13,47 @@ fields:
       required: true
       label: Factor
       type: relation
-      nameFrom: name
+      nameFrom: code
 
 
     title:
       label: Title
       placeholder: Title
+      required: true
+
+
+
+    maturity_level_texts:
+      label: Maturity Level Texts
+      type: section
+      comment: This section contains the description text for each maturity level from 1 to 5.
+
+    maturity_level1_text:
+      label: 1
+      type: textarea
+      size: tiny
+      required: true
+
+    maturity_level2_text:
+      label: 2
+      type: textarea
+      size: tiny
+      required: true
+
+    maturity_level3_text:
+      label: 3
+      type: textarea
+      size: tiny
+      required: true
+
+    maturity_level4_text:
+      label: 4
+      type: textarea
+      size: tiny
+      required: true
+
+    maturity_level5_text:
+      label: 5
+      type: textarea
+      size: tiny
       required: true

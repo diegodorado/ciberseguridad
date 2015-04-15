@@ -38,7 +38,7 @@ set :storage_paths, %w{
   storage/temp
 }
 
-set :linked_dirs, fetch(:linked_dirs) + %w{public/system}
+set :file_permissions_paths, fetch(:file_permissions_paths) + fetch(:storage_paths)
 
 set :laravel_artisan_flags, "--env=production --no-interaction"
 
@@ -59,7 +59,11 @@ namespace :deploy do
     desc "** overriden ** Set user/group permissions on configured paths with setfacl"
     Rake::Task["deploy:set_permissions:acl"].clear_actions
     task :acl => [:check] do
-      invoke 'deploy:set_permissions:chmod'
+      #invoke 'deploy:set_permissions:chmod'
+      next unless any? :file_permissions_paths
+      on roles fetch(:file_permissions_roles) do |host|
+        execute :chmod, "-R", fetch(:file_permissions_chmod_mode), *absolute_writable_paths
+      end
     end
   end
 

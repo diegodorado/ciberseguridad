@@ -38,4 +38,10 @@ class Dimension extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+
+    public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
+
+    public $translatable = ['name', 'title'];    
+
+
 }

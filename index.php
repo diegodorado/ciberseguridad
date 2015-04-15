@@ -1,8 +1,4 @@
 <?php
-
-umask(0002);
-
-
 /**
  * October - The PHP platform that gets back to basics.
  *
