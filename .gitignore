@@ -15,3 +15,17 @@ selenium.php
 .env
 .env.*.php
 .env.php
+
+# Ignore Node & Bower
+###################
+node_modules
+bower_components
+build
+.tmp
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db

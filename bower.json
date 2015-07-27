@@ -1,0 +1,26 @@
+{
+  "name": "ciberseguridad",
+  "version": "0.0.0",
+  "homepage": "https://github.com/diegodorado/ciberseguridad",
+  "authors": [
+    "Diego Dorado <diegodorado@gmail.com>"
+  ],
+  "description": "Observatorio de la Ciberseguridad",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.3",
+    "bootstrap": "3.3.2",
+    "font-awesome": "~4.3.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-animate": "~1.4.3",
+    "angular-sanitize": "~1.4.3"
+  }
+}

@@ -62,7 +62,8 @@ namespace :deploy do
       #invoke 'deploy:set_permissions:chmod'
       next unless any? :file_permissions_paths
       on roles fetch(:file_permissions_roles) do |host|
-        execute :chmod, "-R", fetch(:file_permissions_chmod_mode), *absolute_writable_paths
+        execute :chmod, "", fetch(:file_permissions_chmod_mode), *absolute_writable_paths
+        #execute :chmod, "-R", fetch(:file_permissions_chmod_mode), *absolute_writable_paths
       end
     end
   end
