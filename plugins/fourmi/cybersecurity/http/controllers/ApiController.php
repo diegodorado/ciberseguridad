@@ -38,7 +38,7 @@ class ApiController extends Controller
 
     public function countries()
     {
-        try{
+//        try{
 
             $response = [
                 'countries' => []
@@ -59,17 +59,17 @@ class ApiController extends Controller
 
             }
 
-
+/*
         }catch (Exception $e){
             $statusCode = 404;
-        }finally{
+        }finally{*/
             return Response::json($response, $statusCode);
-        }
+//        }
     }
 
     public function all()
     {
-        try{
+//        try{
 
             $response = [
                 'countries' => [],
@@ -127,11 +127,11 @@ class ApiController extends Controller
 
 
 
-        }catch (Exception $e){
-            $statusCode = 404;
-        }finally{
+//        }catch (Exception $e){
+//            $statusCode = 404;
+//        }finally{
             return Response::json($response, $statusCode);
-        }
+//        }
     }
 
 
