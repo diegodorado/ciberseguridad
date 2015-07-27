@@ -137,7 +137,7 @@ class ApiController extends Controller
 
     public function changeLocale($locale)
     {
-        try{
+        //try{
 
             $response = [];
             $statusCode = 200;
@@ -145,11 +145,11 @@ class ApiController extends Controller
             \RainLab\Translate\Classes\Translator::instance()->setLocale($locale);
             $response['locale'] = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
 
-        }catch (Exception $e){
-            $statusCode = 404;
-        }finally{
+        //}catch (Exception $e){
+        //    $statusCode = 404;
+        //}finally{
             return Response::json($response, $statusCode);
-        }
+        //}
     }
 
 
