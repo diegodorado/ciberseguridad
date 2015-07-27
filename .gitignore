@@ -21,7 +21,7 @@ selenium.php
 node_modules
 -bower_components
 build
-.tmp
+-.tmp
 
 # OS generated files #
 ######################
