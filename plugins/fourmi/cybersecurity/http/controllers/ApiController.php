@@ -1,8 +1,11 @@
 <?php
 namespace Fourmi\CyberSecurity\Http\Controllers;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
+
 use Fourmi\CyberSecurity\Models\Country;
 use Fourmi\CyberSecurity\Models\Dimension;
+use RainLab\Translate\Models\Message;
 use Response;
 
 class ApiController extends Controller
@@ -45,19 +48,30 @@ class ApiController extends Controller
             ];
             $statusCode = 200;
 
-            $countries = Country::all();
             $locale = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
 
+            $countries = Country::with('maturity_levels')->get();
 
             foreach($countries as $country){
                 $country->translateContext($locale);
-
-                $response['countries'][] = [
-                    'id' => $country->id,
-                    'name' => $country->name
+                $data = [
+                  'id' => $country->id,
+                  'code' => $country->code,
+                  'name' => $country->name,
+                  'excerpt' => $country->excerpt,
+                  'description' => $country->description,
+                  'population' => $country->population,
+                  'people_with_internet' => $country->people_with_internet,
+                  'people_with_broadband' => $country->people_with_broadband,
+                  'people_with_mobile_phone' => $country->people_with_mobile_phone
                 ];
+                foreach($country->maturity_levels as $ml)
+                  $data['maturity_levels'][$ml->indicator_id] = $ml->level;
+
+                $response['$countries'][] = $data;
 
             }
+
 
 /*
         }catch (Exception $e){
@@ -78,18 +92,28 @@ class ApiController extends Controller
             ];
             $statusCode = 200;
 
-            $countries = Country::all();
             $locale = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
             $response['locale'] = $locale;
 
+            $countries = Country::with('maturity_levels')->get();
 
             foreach($countries as $country){
                 $country->translateContext($locale);
-
-                $response['countries'][] = [
-                    'id' => $country->id,
-                    'name' => $country->name
+                $data = [
+                  'id' => $country->id,
+                  'code' => $country->code,
+                  'name' => $country->name,
+                  'excerpt' => $country->excerpt,
+                  'description' => $country->description,
+                  'population' => $country->population,
+                  'people_with_internet' => $country->people_with_internet,
+                  'people_with_broadband' => $country->people_with_broadband,
+                  'people_with_mobile_phone' => $country->people_with_mobile_phone
                 ];
+                foreach($country->maturity_levels as $ml)
+                  $data['maturity_levels'][$ml->indicator_id] = $ml->level;
+
+                $response['countries'][] = $data;
 
             }
 
@@ -117,8 +141,16 @@ class ApiController extends Controller
 
                         $data_f['indicators'][] = [
                             'id' => $indicator->id,
-                            'title' => $indicator->title
+                            'title' => $indicator->title,
+                            'maturity_level1_text' => $indicator->maturity_level1_text,
+                            'maturity_level2_text' => $indicator->maturity_level2_text,
+                            'maturity_level3_text' => $indicator->maturity_level3_text,
+                            'maturity_level4_text' => $indicator->maturity_level4_text,
+                            'maturity_level5_text' => $indicator->maturity_level5_text,
                         ];
+
+
+
                     }
                     $data['factors'][] = $data_f;
                 }
@@ -152,6 +184,25 @@ class ApiController extends Controller
         //}
     }
 
+    public function messages(Request $request)
+    {
+        $lang = $request->input('lang');
+        $response = [];
+        $statusCode = 200;
+
+        $messages = Message::all();
+        foreach($messages as $message){
+          if (array_key_exists($lang, $message->message_data)) {
+            $response[$message->code] = $message->message_data[$lang];
+          }else{
+            $response[$message->code] = $message->message_data['x'];
+          }
+        }
+
+        $response = Cms\Classes\Theme::getActiveTheme();
+
+        return Response::json($response, $statusCode);
+    }
 
 
 }

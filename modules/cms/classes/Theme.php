@@ -150,7 +150,7 @@ class Theme
 
         if (DbDongle::hasDatabase()) {
             $dbResult = Cache::remember(self::ACTIVE_KEY, 1440, function() {
-                return Parameters::findRecord(self::ACTIVE_KEY)->pluck('value');
+                return Parameters::applyKey(self::ACTIVE_KEY)->pluck('value');
             });
 
             if ($dbResult !== null && static::exists($dbResult)) {
@@ -308,12 +308,11 @@ class Theme
     public function getPreviewImageUrl()
     {
         $previewPath = '/assets/images/theme-preview.png';
-        $path = $this->getPath().$previewPath;
-        if (!File::exists($path)) {
-            return URL::asset('modules/cms/assets/images/default-theme-preview.png');
+        if (File::exists($this->getPath().$previewPath)) {
+            return URL::asset('themes/'.$this->getDirName().$previewPath);
         }
 
-        return URL::asset('themes/'.$this->getDirName().$previewPath);
+        return URL::asset('modules/cms/assets/images/default-theme-preview.png');
     }
 
     /**

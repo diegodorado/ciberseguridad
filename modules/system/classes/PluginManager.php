@@ -8,7 +8,6 @@ use View;
 use Config;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
-use Illuminate\Container\Container;
 use ApplicationException;
 
 /**
@@ -179,7 +178,7 @@ class PluginManager
          */
         $autoloadPath = $pluginPath . '/vendor/autoload.php';
         if (File::isFile($autoloadPath)) {
-            require_once $autoloadPath;
+            ComposerManager::instance()->autoload($pluginPath . '/vendor');
         }
 
         if (!self::$noInit || $plugin->elevated) {
@@ -208,6 +207,14 @@ class PluginManager
         $viewsPath = $pluginPath . '/views';
         if (File::isDirectory($viewsPath)) {
             View::addNamespace($pluginNamespace, $viewsPath);
+        }
+
+        /*
+         * Add init, if available
+         */
+        $initFile = $pluginPath . '/init.php';
+        if (!self::$noInit && File::exists($initFile)) {
+            require $initFile;
         }
 
         /*
@@ -644,5 +651,41 @@ class PluginManager
         }
 
         return $result;
+    }
+
+    //
+    // Management
+    //
+
+    /**
+     * Completely roll back and delete a plugin from the system.
+     * @param string $id Plugin code/namespace
+     * @return void
+     */
+    public function deletePlugin($id)
+    {
+        /*
+         * Rollback plugin
+         */
+        UpdateManager::instance()->rollbackPlugin($id);
+
+        /*
+         * Delete from file system
+         */
+        if ($pluginPath = PluginManager::instance()->getPluginPath($id)) {
+            File::deleteDirectory($pluginPath);
+        }
+    }
+
+    /**
+     * Tears down a plugin's database tables and rebuilds them.
+     * @param string $id Plugin code/namespace
+     * @return void
+     */
+    public function refreshPlugin($id)
+    {
+        $manager = UpdateManager::instance();
+        $manager->rollbackPlugin($id);
+        $manager->updatePlugin($id);
     }
 }

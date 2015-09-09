@@ -20,7 +20,8 @@ return [
         'ro' => 'Română (România)',
         'ru' => 'Русский (Россия - Russia)',
         'se' => 'Svenska (Sverige)',
-        'tr' => 'Türkçe (Türkiye)'
+        'tr' => 'Türkçe (Türkiye)',
+        'nb-no' => 'Norwegian (Bokmål)'
     ],
     'directory' => [
         'create_fail' => "Klasör oluşturulamıyor: :name"
@@ -165,19 +166,15 @@ return [
         'plugin_description' => 'Açıklama',
         'plugin_version' => 'Versiyon',
         'plugin_author' => 'Yazar',
-        'core_build' => 'Mevcut versiyon',
-        'core_build_old' => 'Mevcut versiyon :build',
-        'core_build_new' => 'Versiyon :build',
-        'core_build_new_help' => 'Son versiyon kullanılabilir.',
+        'core_current_build' => 'Mevcut versiyon',
+        'core_build' => 'Versiyon :build',
+        'core_build_help' => 'Son versiyon kullanılabilir.',
         'core_downloading' => 'Uygulama dosyaları indiriliyor',
         'core_extracting' => 'Uygulama dosyaları çıkarılıyor',
         'plugins' => 'Modüller',
         'plugin_downloading' => 'Modül indiriliyor: :name',
         'plugin_extracting' => 'Modül dosyaları çıkarılıyor: :name',
         'plugin_version_none' => 'Yeni eklenti',
-        'plugin_version_old' => 'Mevcut v:version',
-        'plugin_version_new' => 'v:version',
-        'theme_label' => 'Tema',
         'theme_new_install' => 'Yeni tema kur.',
         'theme_downloading' => 'Tema indiriliyor: :name',
         'theme_extracting' => 'Tema paketten çıkarılıyor: :name',

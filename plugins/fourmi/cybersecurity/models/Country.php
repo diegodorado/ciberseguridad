@@ -27,7 +27,9 @@ class Country extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'maturity_levels' => ['Fourmi\CyberSecurity\Models\MaturityLevel']
+    ];
     public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -37,9 +39,9 @@ class Country extends Model
     public $attachMany = [];
 
     public $hasManyThrough = [
-        'maturity_levels' => [
-            'Fourmi\CyberSecurity\Models\MaturityLevel',
-            'through' => 'Fourmi\CyberSecurity\Models\Indicator'
+        'indicators' => [
+            'Fourmi\CyberSecurity\Models\Indicator',
+            'through' => 'Fourmi\CyberSecurity\Models\MaturityLevel'
         ],
     ];
 

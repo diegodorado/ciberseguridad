@@ -1,0 +1,27 @@
+{
+  "name": "ciberseguridad",
+  "version": "1.0.0",
+  "description": "Observatorio de la Ciber Seguridad en Latinoamerica y el Caribe",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegodorado/ciberseguridad.git"
+  },
+  "author": "Diego Dorado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegodorado/ciberseguridad/issues"
+  },
+  "homepage": "https://github.com/diegodorado/ciberseguridad#readme",
+  "devDependencies": {
+    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-rsync": "0.0.5"
+  }
+}

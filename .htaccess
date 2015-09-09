@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    Options +FollowSymLinks
 
     ##
     ## You may need to uncomment the following line for some hosting environments,
