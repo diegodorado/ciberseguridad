@@ -81,19 +81,16 @@ class ApiController extends Controller
 //        }
     }
 
-    public function all()
+    public function all($locale)
     {
 //        try{
 
             $response = [
                 'countries' => [],
                 'dimensions' => [],
-                'locale' => ''
             ];
             $statusCode = 200;
 
-            $locale = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
-            $response['locale'] = $locale;
 
             $countries = Country::with('maturity_levels')->get();
 
@@ -149,21 +146,14 @@ class ApiController extends Controller
                             'maturity_level5_text' => $indicator->maturity_level5_text,
                         ];
 
-
-
                     }
                     $data['factors'][] = $data_f;
                 }
                 $response['dimensions'][] = $data;
             }
 
-
-
-//        }catch (Exception $e){
-//            $statusCode = 404;
-//        }finally{
             return Response::json($response, $statusCode);
-//        }
+
     }
 
 
