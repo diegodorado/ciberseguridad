@@ -7,6 +7,7 @@ use Fourmi\CyberSecurity\Models\Country;
 use Fourmi\CyberSecurity\Models\Dimension;
 use RainLab\Translate\Models\Message;
 use Response;
+use Excel;
 
 class ApiController extends Controller
 {
@@ -131,7 +132,8 @@ class ApiController extends Controller
                     $data_f = [
                         'id' => $factor->id,
                         'code' => $factor->code,
-                        'title' => $factor->title
+                        'title' => $factor->title,
+                        'description' => $factor->description
                     ];
                     foreach($factor->indicators as $indicator){
                         $indicator->translateContext($locale);
@@ -193,6 +195,33 @@ class ApiController extends Controller
 
         return Response::json($response, $statusCode);
     }
+
+
+
+    public function excel(Request $request)
+    {
+        $lang = $request->input('lang');
+        $response = [];
+        $statusCode = 200;
+
+        Excel::create('Laravel Excel', function($excel) {
+
+            $excel->sheet('Excel sheet', function($sheet) {
+
+                $sheet->setOrientation('landscape');
+                $sheet->fromArray(array(
+                            array('data1', 'data2'),
+                            array('data3', 'data4')
+                        ));
+
+
+            });
+
+        })->export('xls');
+
+        return Response::json($response, $statusCode);
+    }
+
 
 
 }

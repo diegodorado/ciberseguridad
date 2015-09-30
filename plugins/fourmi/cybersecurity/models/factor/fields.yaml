@@ -25,3 +25,9 @@ fields:
       span: right
       placeholder: Title
       required: true
+
+    description:
+      label: Description
+      type: textarea
+      size: large
+      required: true

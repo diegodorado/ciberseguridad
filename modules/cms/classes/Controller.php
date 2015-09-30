@@ -106,12 +106,12 @@ class Controller
     /**
      * @var Cms\Classes\ComponentBase Object of the active component, used internally.
      */
-    protected $componentContext;
+    protected $componentContext = null;
 
     /**
      * @var array Component partial stack, used internally.
      */
-    protected $partialComponentStack = [];
+    protected $partialStack = [];
 
     /**
      * Creates the controller.
@@ -127,6 +127,7 @@ class Controller
 
         $this->assetPath = Config::get('cms.themesPath', '/themes').'/'.$this->theme->getDirName();
         $this->router = new Router($this->theme);
+        $this->partialStack = new PartialStack;
         $this->initTwigEnvironment();
 
         self::$instance = $this;
@@ -847,6 +848,8 @@ class Controller
          */
 
         if ($partial instanceof Partial) {
+            $this->partialStack->stackPartial();
+
             $manager = ComponentManager::instance();
 
             foreach ($partial->settings['components'] as $component => $properties) {
@@ -868,10 +871,7 @@ class Controller
                 $componentObj->alias = $alias;
                 $parameters[$alias] = $partial->components[$alias] = $componentObj;
 
-                array_push($this->partialComponentStack, [
-                    'name' => $alias,
-                    'obj' => $componentObj
-                ]);
+                $this->partialStack->addComponent($alias, $componentObj);
 
                 $this->setComponentPropertiesFromParams($componentObj, $parameters);
                 $componentObj->init();
@@ -890,7 +890,7 @@ class Controller
         }
 
         /*
-         * Render the parital
+         * Render the partial
          */
         CmsException::mask($partial, 400);
         $this->loader->setObject($partial);
@@ -899,13 +899,10 @@ class Controller
         CmsException::unmask();
 
         if ($partial instanceof Partial) {
-            if ($this->partialComponentStack) {
-                array_pop($this->partialComponentStack);
-            }
+            $this->partialStack->unstackPartial();
         }
 
         $this->vars = $vars;
-        $this->componentContext = null;
         return $result;
     }
 
@@ -1224,10 +1221,9 @@ class Controller
             return $this->layout->components[$name];
         }
 
-        foreach ($this->partialComponentStack as $componentInfo) {
-            if ($componentInfo['name'] == $name) {
-                return $componentInfo['obj'];
-            }
+        $partialComponent = $this->partialStack->getComponent($name);
+        if ($partialComponent !== null) {
+            return $partialComponent;
         }
 
         return null;
@@ -1290,7 +1286,7 @@ class Controller
      * @param ComponentBase $component
      * @return void
      */
-    public function setComponentContext(ComponentBase $component)
+    public function setComponentContext(ComponentBase $component = null)
     {
         $this->componentContext = $component;
     }

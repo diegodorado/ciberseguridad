@@ -1,5 +1,6 @@
 <?php namespace System\Classes;
 
+use Db;
 use App;
 use URL;
 use File;
@@ -414,6 +415,9 @@ class UpdateManager
         }
 
         @unlink($filePath);
+
+        // Database may fall asleep after this long process
+        Db::reconnect();
 
         Parameters::set([
             'system::core.hash'  => $hash,
@@ -833,6 +837,7 @@ class UpdateManager
     protected function applyHttpAttributes($http, $postData)
     {
         $postData['url'] = base64_encode(URL::to('/'));
+        $postData['server'] = base64_encode(serialize(['php' => PHP_VERSION]));
         if (Config::get('cms.edgeUpdates', false)) {
             $postData['edge'] = 1;
         }

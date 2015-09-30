@@ -20,3 +20,6 @@
 1.0.7:
   - Seed Maturity Levels (randomly)
   - seed_maturity_levels.php
+1.0.8:
+  - Add description to factors
+  - add_description_to_factors_table.php

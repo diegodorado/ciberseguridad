@@ -3437,7 +3437,8 @@ if(!!trigger.length){triggerValue=trigger.val()}
 this.updateTarget($.inArray(triggerValue,this.triggerConditionValue)!=-1)}}
 TriggerOn.prototype.updateTarget=function(status){var self=this,actions=this.options.triggerAction.split('|')
 $.each(actions,function(index,action){self.updateTargetAction(action,status)})
-$(window).trigger('resize')}
+$(window).trigger('resize')
+this.$el.trigger('oc.triggerOn.afterUpdate',status)}
 TriggerOn.prototype.updateTargetAction=function(action,status){if(action=='show'){this.$el.toggleClass('hide',!status).trigger('hide.oc.triggerapi',[!status])}
 else if(action=='hide'){this.$el.toggleClass('hide',status).trigger('hide.oc.triggerapi',[status])}
 else if(action=='enable'){this.$el.prop('disabled',!status).toggleClass('control-disabled',!status).trigger('disable.oc.triggerapi',[!status])}
@@ -3811,13 +3812,13 @@ if(this.options.slidable){this.$pagesContainer.touchwipe({wipeRight:function(){s
 this.$tabsContainer.toolbar({scrollClassContainer:this.$el})
 this.updateClasses()}
 Tab.prototype.initTab=function(li){var
-$tabs=$('>li',this.$tabsContainer),tabIndex=$tabs.index(li),time=new Date().getTime(),targetId=this.tabId+'-tab-'+tabIndex+time,$a=$('a',li)
-$a.attr('data-target','#'+targetId).attr('data-toggle','tab')
-if(!$a.attr('title'))
-$a.attr('title',$a.text())
-var html=$a.html()
-$a.html('')
-$a.append($('<span class="title"></span>').append($('<span></span>').html(html)))
+$tabs=$('>li',this.$tabsContainer),tabIndex=$tabs.index(li),time=new Date().getTime(),targetId=this.tabId+'-tab-'+tabIndex+time,$anchor=$('a',li)
+$anchor.data('target','#'+targetId).attr('data-target','#'+targetId).attr('data-toggle','tab')
+if(!$anchor.attr('title'))
+$anchor.attr('title',$anchor.text())
+var html=$anchor.html()
+$anchor.html('')
+$anchor.append($('<span class="title"></span>').append($('<span></span>').html(html)))
 var pane=$('> .tab-pane',this.$pagesContainer).eq(tabIndex).attr('id',targetId)
 $(li).append($('<span class="tab-close"><i>&times;</i></span>').click(function(){$(this).trigger('close.oc.tab')
 return false}))
