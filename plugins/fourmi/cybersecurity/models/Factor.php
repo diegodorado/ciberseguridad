@@ -43,6 +43,6 @@ class Factor extends Model
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    public $translatable = ['title'];    
+    public $translatable = ['title', 'description'];    
 
 }
