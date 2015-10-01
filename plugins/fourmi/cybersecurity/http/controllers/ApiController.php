@@ -200,26 +200,37 @@ class ApiController extends Controller
 
     public function excel(Request $request)
     {
-        $lang = $request->input('lang');
-        $response = [];
-        $statusCode = 200;
+      $codes = 'bb-ar';
 
-        Excel::create('Laravel Excel', function($excel) {
+      $dimensions = Dimension::with('factors.indicators')->get();
+      $codes = explode('-', $codes);
+      $countries = Country::whereIn('code', $codes)->with('maturity_levels')->get();
 
-            $excel->sheet('Excel sheet', function($sheet) {
+      $countries_array = [];
+      foreach($countries as $country){
+          $data = [
+            'id' => $country->id,
+            'code' => $country->code,
+            'name' => $country->name,
+          ];
+          foreach($country->maturity_levels as $ml)
+            $data['maturity_levels'][$ml->indicator_id] = $ml->level;
 
-                $sheet->setOrientation('landscape');
-                $sheet->fromArray(array(
-                            array('data1', 'data2'),
-                            array('data3', 'data4')
-                        ));
+          $countries_array[] = $data;
+      }
+      $countries = $countries_array;
 
 
-            });
+      Excel::create('CiberSeguridad', function($excel) use($dimensions, $countries) {
+          $excel->sheet('Dimensiones', function($sheet) use($dimensions, $countries) {
+              $sheet->loadView('fourmi.cybersecurity::excel', array(
+                'dimensions' => $dimensions,
+                'countries' => $countries
+              ));
+          });
 
-        })->export('xls');
+      })->export('xls');
 
-        return Response::json($response, $statusCode);
     }
 
 
