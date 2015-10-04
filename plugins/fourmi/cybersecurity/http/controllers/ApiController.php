@@ -198,13 +198,12 @@ class ApiController extends Controller
 
 
 
-    public function excel(Request $request)
+    public function excel($countries, $dimensions)
     {
-      $codes = 'bb-ar';
-
-      $dimensions = Dimension::with('factors.indicators')->get();
-      $codes = explode('-', $codes);
-      $countries = Country::whereIn('code', $codes)->with('maturity_levels')->get();
+      $dimensions = explode('-', $dimensions);
+      $dimensions = Dimension::whereIn('id', $dimensions)->with('factors.indicators')->get();
+      $countries = explode('-', $countries);
+      $countries = Country::whereIn('code', $countries)->with('maturity_levels')->get();
 
       $countries_array = [];
       foreach($countries as $country){
