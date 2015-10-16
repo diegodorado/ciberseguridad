@@ -11,79 +11,9 @@ use Excel;
 
 class ApiController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Welcome Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller renders the "marketing page" for the application and
-    | is configured to only allow guests. Like most of the other sample
-    | controllers, you are free to modify or remove it as you desire.
-    |
-    */
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('guest');
-    }
-    /**
-     * Show the application welcome screen to the user.
-     *
-     * @return Response
-     */
-    public function index()
-    {//not used
-        return view('fourmi.cybersecurity::welcome');
-    }
-
-    public function countries()
-    {//not used
-//        try{
-
-            $response = [
-                'countries' => []
-            ];
-            $statusCode = 200;
-
-            $locale = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
-
-            $countries = Country::with('maturity_levels')->get();
-
-            foreach($countries as $country){
-                $country->translateContext($locale);
-                $data = [
-                  'id' => $country->id,
-                  'code' => $country->code,
-                  'name' => $country->name,
-                  'excerpt' => $country->excerpt,
-                  'description' => $country->description,
-                  'population' => $country->population,
-                  'people_with_internet' => $country->people_with_internet,
-                  'mobile_phone_subscriptions' => $country->people_with_mobile_phone
-                ];
-                foreach($country->maturity_levels as $ml)
-                  $data['maturity_levels'][$ml->indicator_id] = $ml->level;
-
-                $response['$countries'][] = $data;
-
-            }
-
-
-/*
-        }catch (Exception $e){
-            $statusCode = 404;
-        }finally{*/
-            return Response::json($response, $statusCode);
-//        }
-    }
 
     public function all($locale)
     {
-//        try{
 
             $response = [
                 'countries' => [],
@@ -104,8 +34,7 @@ class ApiController extends Controller
                   'description' => $country->description,
                   'population' => $country->population,
                   'people_with_internet' => $country->people_with_internet,
-                  'people_with_broadband' => $country->people_with_broadband,
-                  'people_with_mobile_phone' => $country->people_with_mobile_phone
+                  'mobile_phone_subscriptions' => $country->people_with_mobile_phone
                 ];
                 foreach($country->maturity_levels as $ml)
                   $data['maturity_levels'][$ml->indicator_id] = $ml->level;
@@ -158,44 +87,6 @@ class ApiController extends Controller
     }
 
 
-    public function changeLocale($locale)
-    {//not used
-        //try{
-
-            $response = [];
-            $statusCode = 200;
-
-            \RainLab\Translate\Classes\Translator::instance()->setLocale($locale);
-            $response['locale'] = \RainLab\Translate\Classes\Translator::instance()->getLocale(true);
-
-        //}catch (Exception $e){
-        //    $statusCode = 404;
-        //}finally{
-            return Response::json($response, $statusCode);
-        //}
-    }
-
-    public function messages(Request $request)
-    {//not used
-        $lang = $request->input('lang');
-        $response = [];
-        $statusCode = 200;
-
-        $messages = Message::all();
-        foreach($messages as $message){
-          if (array_key_exists($lang, $message->message_data)) {
-            $response[$message->code] = $message->message_data[$lang];
-          }else{
-            $response[$message->code] = $message->message_data['x'];
-          }
-        }
-
-        $response = Cms\Classes\Theme::getActiveTheme();
-
-        return Response::json($response, $statusCode);
-    }
-
-
 
     public function excel($locale, $countries, $dimensions)
     {
@@ -219,8 +110,13 @@ class ApiController extends Controller
       $countries = $countries_array;
 
 
-      Excel::create('CiberSeguridad', function($excel) use($dimensions, $countries) {
-          $excel->sheet('Dimensiones', function($sheet) use($dimensions, $countries) {
+      Excel::create('CiberSeguridad', function($excel) use($locale,$dimensions, $countries) {
+          $excel->sheet('Dimensiones', function($sheet) use($locale,$dimensions, $countries) {
+              $sheet->setStyle(array(
+                  'border' => array(
+                      'color'      =>  array('rgb' => 'FF0000')
+                  )
+              ));
               $sheet->loadView('fourmi.cybersecurity::excel', array(
                 'locale' => $locale,
                 'dimensions' => $dimensions,
