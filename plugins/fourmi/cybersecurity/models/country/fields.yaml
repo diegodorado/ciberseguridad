@@ -31,14 +31,8 @@ fields:
       span: none
       cssClass: col-md-3
 
-    people_with_broadband:
-      label: People with Broadband
-      type: number
-      span: none
-      cssClass: col-md-3
-
     people_with_mobile_phone:
-      label: People with mobile phone
+      label: Mobile phone subscriptions
       type: number
       span: none
       cssClass: col-md-3

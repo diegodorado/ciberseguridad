@@ -18,10 +18,7 @@ columns:
       label: population
 
     people_with_internet:
-      label: people_with_internet
-
-    people_with_broadband:
-      label: people_with_broadband
+      label: people with internet access
 
     people_with_mobile_phone:
-      label: people_with_mobile_phone
+      label: mobile phone subscriptions

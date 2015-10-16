@@ -36,12 +36,12 @@ class ApiController extends Controller
      * @return Response
      */
     public function index()
-    {
+    {//not used
         return view('fourmi.cybersecurity::welcome');
     }
 
     public function countries()
-    {
+    {//not used
 //        try{
 
             $response = [
@@ -63,8 +63,7 @@ class ApiController extends Controller
                   'description' => $country->description,
                   'population' => $country->population,
                   'people_with_internet' => $country->people_with_internet,
-                  'people_with_broadband' => $country->people_with_broadband,
-                  'people_with_mobile_phone' => $country->people_with_mobile_phone
+                  'mobile_phone_subscriptions' => $country->people_with_mobile_phone
                 ];
                 foreach($country->maturity_levels as $ml)
                   $data['maturity_levels'][$ml->indicator_id] = $ml->level;
@@ -160,7 +159,7 @@ class ApiController extends Controller
 
 
     public function changeLocale($locale)
-    {
+    {//not used
         //try{
 
             $response = [];
@@ -177,7 +176,7 @@ class ApiController extends Controller
     }
 
     public function messages(Request $request)
-    {
+    {//not used
         $lang = $request->input('lang');
         $response = [];
         $statusCode = 200;
@@ -198,7 +197,7 @@ class ApiController extends Controller
 
 
 
-    public function excel($countries, $dimensions)
+    public function excel($locale, $countries, $dimensions)
     {
       $dimensions = explode('-', $dimensions);
       $dimensions = Dimension::whereIn('id', $dimensions)->with('factors.indicators')->get();
@@ -223,6 +222,7 @@ class ApiController extends Controller
       Excel::create('CiberSeguridad', function($excel) use($dimensions, $countries) {
           $excel->sheet('Dimensiones', function($sheet) use($dimensions, $countries) {
               $sheet->loadView('fourmi.cybersecurity::excel', array(
+                'locale' => $locale,
                 'dimensions' => $dimensions,
                 'countries' => $countries
               ));
