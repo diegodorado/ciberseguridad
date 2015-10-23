@@ -25,6 +25,12 @@ fields:
       span: none
       cssClass: col-md-3
 
+    people_with_broadband:
+      label: People with Computer
+      type: number
+      span: none
+      cssClass: col-md-3
+
     people_with_internet:
       label: People with Internet
       type: number

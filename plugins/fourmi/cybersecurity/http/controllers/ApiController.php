@@ -33,6 +33,7 @@ class ApiController extends Controller
                   'excerpt' => $country->excerpt,
                   'description' => $country->description,
                   'population' => $country->population,
+                  'people_with_computer' => $country->people_with_broadband,
                   'people_with_internet' => $country->people_with_internet,
                   'mobile_phone_subscriptions' => $country->people_with_mobile_phone
                 ];

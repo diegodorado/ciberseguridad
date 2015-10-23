@@ -17,6 +17,9 @@ columns:
     population:
       label: population
 
+    people_with_broadband:
+      label: people with computer
+
     people_with_internet:
       label: people with internet access
 
