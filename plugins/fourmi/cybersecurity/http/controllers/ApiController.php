@@ -98,6 +98,7 @@ class ApiController extends Controller
 
       $countries_array = [];
       foreach($countries as $country){
+          $country->translateContext($locale);
           $data = [
             'id' => $country->id,
             'code' => $country->code,
@@ -110,9 +111,10 @@ class ApiController extends Controller
       }
       $countries = $countries_array;
 
-
-      Excel::create('CiberSeguridad', function($excel) use($locale,$dimensions, $countries) {
-          $excel->sheet('Dimensiones', function($sheet) use($locale,$dimensions, $countries) {
+      $book = ($locale=='es')?'CiberSeguridad':'Cybersecurity';
+      $sheet = ($locale=='es')?'Dimensiones':'Dimensions';
+      Excel::create($book , function($excel) use($locale,$dimensions, $countries, $book, $sheet) {
+          $excel->sheet($sheet, function($sheet) use($locale,$dimensions, $countries) {
               $sheet->setStyle(array(
                   'border' => array(
                       'color'      =>  array('rgb' => 'FF0000')

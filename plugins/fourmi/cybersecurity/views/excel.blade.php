@@ -69,7 +69,11 @@
   <body>
     <table>
       <tr>
-        <td class="heading2">Observatorio de la CiberSeguridad en Latinoamerica y el Caribe</td>
+        @if ($locale == 'es')
+          <td class="heading2">Observatorio de la CiberSeguridad en Latinoamerica y el Caribe</td>
+        @else
+          <td class="heading2">Observatory of Cybersecurity in Latin America and The Caribbean</td>
+        @endif
         @foreach ($countries as $country)
           <td></td>
         @endforeach
@@ -83,6 +87,8 @@
         <td></td>
       </tr>
       @foreach ($dimensions as $dimension)
+        @if ($dimension->translateContext($locale))
+        @endif
         <tr>
           <td width="60" align="right" class="heading1 fgc-{{ $dimension->id }}">{{ $dimension->title }}</td>
           @foreach ($countries as $country)
@@ -91,6 +97,8 @@
           <td></td>
         </tr>
         @foreach ($dimension->factors as $factor)
+          @if ($factor->translateContext($locale))
+          @endif
           <tr>
             <td style="font-weight: bold;" align="right">{{ $factor->title }}</td>
             @foreach ($countries as $country)
@@ -99,6 +107,8 @@
             <td></td>
           </tr>
           @foreach ($factor->indicators as $indicator)
+            @if ($indicator->translateContext($locale))
+            @endif
             <tr>
               <td valign="middle" align="right" class="ind-title fgc-{{ $dimension->id }}">{{ $indicator->title }}</td>
               @foreach ($countries as $country)
